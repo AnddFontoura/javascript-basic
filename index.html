@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/my_script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12 mt-3">
+                <div class="card">
+                    <div class="card-body" onmouseover="onHoverElement(this)" id="bloco-esquerdo" onClick="alterarConteudo()">
+                        <h1> Bloco esquerdo</h1>
+                        <h2> Steh </h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-sm-12 mt-3">
+                <div class="card">
+                    <div class="card-body" ondblclick="onHoverElement(this)">
+                        <h1> Bloco direito</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 mt-3 h-50" onmouseover="showImage(this)" id="divImage">
+                <h1></h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
