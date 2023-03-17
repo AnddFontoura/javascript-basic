@@ -4,9 +4,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/my_style.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/lightbox.css" rel="stylesheet" />
+    <link href="css/my_style.css" rel="stylesheet" />
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/lightbox.js"></script>
     <script src="js/my_script.js"></script>
 </head>
 <body>
@@ -19,46 +22,95 @@
                     </div>
 
                     <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item"> 
-                                <span class="badge bg-primary rounded-pill">-</span> 
-                                André
-                            </li>
+                        <ul class="list-group" id="listaAluno">
                         </ul>
                     </div>
 
                     <div class="card-footer">
                         <div class='form-group'>
-                            <input type="text" class='form-control' id="novoAluno">
+                            <input id="nomeAluno" type="text" class='form-control'>
                         </div>
                         
-                        <div class='btn btn-success mt-3'> Adicionar Aluno </div>
+                        <div id="adicionarAluno" class='btn btn-success mt-3'> Adicionar Aluno </div>
                         
                     </div>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-6 mt-3">
-                <img class="img w-100" src="img/image.jpg">
+                <img class="img w-100" src="img/image.jpg" id="imageDragon">
             </div>
 
             <div class="col-12 mt-3">
                 <div class="row">
                     <div class="col-md-3 col-lg-3">
-                        <img src="img/hp_1.jfif" class="img w-100">
+                        <a href="img/hp_1.jfif" data-lightbox="image-1" data-title="My caption">
+                            <img src="img/hp_1.jfif" class="img w-100">
+                        </a>
                     </div>
                     <div class="col-md-3 col-lg-3">
-                        <img src="img/hp_2.jfif" class="img w-100">
+                        
+                        <a href="img/hp_2.jfif" data-lightbox="image-1" data-title="My caption">
+                            <img src="img/hp_2.jfif" class="img w-100">
+                        </a>
                     </div>
                     <div class="col-md-3 col-lg-3">
+                        
+                        <a href="img/hp_3.jfif" data-lightbox="image-1" data-title="My caption">
                         <img src="img/hp_3.jfif" class="img w-100">
+                        </a>
                     </div>
                     <div class="col-md-3 col-lg-3">
+                        
+                        <a href="img/hp_4.jfif" data-lightbox="image-1" data-title="My caption">
                         <img src="img/hp_4.jfif" class="img w-100">
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#imageDragon').fadeTo('slow', 0.5);
+            $('#imageDragon').fadeTo('slow', 1);
+
+            let alunosParaAdicionar = [
+                'Pedro',
+                'Ana',
+                'Vitor',
+                'Ronalda',
+                'Joaozinha'
+            ];
+
+            alunosParaAdicionar.forEach(function(name) {
+                $('#listaAluno').append("<li class='list-group-item removerAluno'> <span class='badge bg-primary rounded-pill'>-</span> " + name + " </li>");
+            })
+        });
+
+        $('#adicionarAluno').on('click', function() {
+            let nomeAluno = $('#nomeAluno')[0].value;
+            // Como é em javascript puro
+            //let oldAlunos = document.getElementById('listaAluno').innerHTML; 
+            //document.getElementById('listaAluno').innerHTML = oldAlunos + " <li class='list-group-item'> <span class='badge bg-primary rounded-pill'>-</span> " + nomeAluno + " </li>";
+            
+            if (nomeAluno.length < 8) {
+                alert('Seu nome deve ser maior do que 8 caracteres');
+            } else {
+                // Simplificado no Jquery
+                $('#listaAluno').append("<li class='list-group-item removerAluno'> <span class='badge bg-primary rounded-pill'>-</span> " + nomeAluno + " </li>");
+            }
+        });
+
+        $(document).on('click', '.removerAluno', function(e) {
+            $(e.target).remove();
+        })
+
+        $('#imageDragon').hover(function(e) {
+            $(e.target).fadeTo('slow', 0.5);
+            $(e.target).fadeTo('slow', 1);
+        })
+    </script>
 </body>
 </html>
